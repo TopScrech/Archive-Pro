@@ -6,23 +6,28 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F31EAAF42E231709002D2665 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F31EAAF12E231709002D2665 /* Assets.xcassets */; };
+		F31EAAF52E231709002D2665 /* Archive Pro.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31EAAF02E231709002D2665 /* Archive Pro.swift */; };
+		F31EAAF62E231709002D2665 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31EAAF22E231709002D2665 /* HomeView.swift */; };
+		F31EAAF82E23173B002D2665 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F31EAAF72E23173B002D2665 /* Localizable.xcstrings */; };
+		F31EAAFB2E2317B1002D2665 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F31EAAFA2E2317B1002D2665 /* ScrechKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		F31EAAE22E231705002D2665 /* Archive Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Archive Pro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F31EAAF02E231709002D2665 /* Archive Pro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Archive Pro.swift"; sourceTree = "<group>"; };
+		F31EAAF12E231709002D2665 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F31EAAF22E231709002D2665 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		F31EAAF72E23173B002D2665 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		F31EAAE42E231705002D2665 /* Archive Pro */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Archive Pro";
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		F31EAADF2E231705002D2665 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F31EAAFB2E2317B1002D2665 /* ScrechKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,7 +37,7 @@
 		F31EAAD92E231705002D2665 = {
 			isa = PBXGroup;
 			children = (
-				F31EAAE42E231705002D2665 /* Archive Pro */,
+				F31EAAF32E231709002D2665 /* Archive Pro */,
 				F31EAAE32E231705002D2665 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +48,17 @@
 				F31EAAE22E231705002D2665 /* Archive Pro.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F31EAAF32E231709002D2665 /* Archive Pro */ = {
+			isa = PBXGroup;
+			children = (
+				F31EAAF02E231709002D2665 /* Archive Pro.swift */,
+				F31EAAF12E231709002D2665 /* Assets.xcassets */,
+				F31EAAF72E23173B002D2665 /* Localizable.xcstrings */,
+				F31EAAF22E231709002D2665 /* HomeView.swift */,
+			);
+			path = "Archive Pro";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -60,11 +76,9 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				F31EAAE42E231705002D2665 /* Archive Pro */,
-			);
 			name = "Archive Pro";
 			packageProductDependencies = (
+				F31EAAFA2E2317B1002D2665 /* ScrechKit */,
 			);
 			productName = "Archive Pro";
 			productReference = F31EAAE22E231705002D2665 /* Archive Pro.app */;
@@ -91,9 +105,13 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = F31EAAD92E231705002D2665;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				F31EAAF92E2317B1002D2665 /* XCRemoteSwiftPackageReference "ScrechKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F31EAAE32E231705002D2665 /* Products */;
 			projectDirPath = "";
@@ -109,6 +127,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F31EAAF82E23173B002D2665 /* Localizable.xcstrings in Resources */,
+				F31EAAF42E231709002D2665 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +139,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F31EAAF52E231709002D2665 /* Archive Pro.swift in Sources */,
+				F31EAAF62E231709002D2665 /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,6 +181,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 0;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -180,11 +203,13 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 0.9;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -223,6 +248,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -238,10 +264,12 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 0.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Release;
 		};
@@ -252,19 +280,20 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Archive Pro";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.topscrech.Archive-Pro";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -284,19 +313,20 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Archive Pro";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.topscrech.Archive-Pro";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -331,6 +361,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F31EAAF92E2317B1002D2665 /* XCRemoteSwiftPackageReference "ScrechKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TopScrech/ScrechKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F31EAAFA2E2317B1002D2665 /* ScrechKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F31EAAF92E2317B1002D2665 /* XCRemoteSwiftPackageReference "ScrechKit" */;
+			productName = ScrechKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F31EAADA2E231705002D2665 /* Project object */;
 }

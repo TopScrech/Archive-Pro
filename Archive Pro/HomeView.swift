@@ -1,18 +1,12 @@
-//
-//  ContentView.swift
-//  Archive Pro
-//
-//  Created by Sergei Saliukov on 13.07.2025.
-//
-
 import SwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
     var body: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
+            
             Text("Hello, world!")
         }
         .padding()
@@ -20,5 +14,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    HomeView()
 }
