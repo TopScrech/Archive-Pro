@@ -8,9 +8,9 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            Button("Test") {
-                vm.createTmpDir()
-            }
+//            Button("Test") {
+//                vm.createTmpDir()
+//            }
             
             if isTargeted {
                 Text("Targeted")
@@ -21,7 +21,7 @@ struct HomeView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.blue, in: .rect(cornerRadius: 16))
         .padding()
-        .onDrop(of: [.fileURL], isTargeted: $isTargeted) { providers -> Bool in
+        .onDrop(of: [.fileURL], isTargeted: $isTargeted) { providers in
             vm.handleDrop(providers)
             
             return true
