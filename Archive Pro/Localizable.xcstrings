@@ -10,9 +10,6 @@
     "Choose a tab from the sidebar" : {
 
     },
-    "Hello, world!" : {
-
-    },
     "Hello, World!" : {
 
     },
@@ -20,6 +17,9 @@
 
     },
     "Settings" : {
+
+    },
+    "Targeted" : {
 
     }
   },
