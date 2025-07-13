@@ -20,6 +20,7 @@
 		F31EAAF12E231709002D2665 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F31EAAF22E231709002D2665 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F31EAAF72E23173B002D2665 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		F31EAAFC2E2395C9002D2665 /* Archive-Pro-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Archive-Pro-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,8 +55,9 @@
 			isa = PBXGroup;
 			children = (
 				F31EAAF02E231709002D2665 /* Archive Pro.swift */,
-				F31EAAF12E231709002D2665 /* Assets.xcassets */,
+				F31EAAFC2E2395C9002D2665 /* Archive-Pro-Info.plist */,
 				F31EAAF72E23173B002D2665 /* Localizable.xcstrings */,
+				F31EAAF12E231709002D2665 /* Assets.xcassets */,
 				F31EAAF22E231709002D2665 /* HomeView.swift */,
 			);
 			path = "Archive Pro";
@@ -286,7 +288,9 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Archive-Pro-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Archive Pro";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -319,7 +323,9 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Archive-Pro-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Archive Pro";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
