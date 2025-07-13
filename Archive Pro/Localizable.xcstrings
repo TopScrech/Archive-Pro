@@ -1,7 +1,25 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
+    "About" : {
+
+    },
+    "Choose a tab from the sidebar" : {
+
+    },
     "Hello, world!" : {
+
+    },
+    "Hello, World!" : {
+
+    },
+    "Home" : {
+
+    },
+    "Settings" : {
 
     }
   },
