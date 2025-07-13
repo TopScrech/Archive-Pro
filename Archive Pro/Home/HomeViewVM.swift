@@ -13,6 +13,10 @@ final class HomeViewVM {
             }
             
             _ = provider.loadObject(ofClass: URL.self) { url, error in
+                if let error {
+                    print("Error:", error)
+                }
+                
                 guard let url else {
                     return
                 }
