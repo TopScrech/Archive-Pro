@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 90;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -28,11 +28,9 @@
 /* Begin PBXFrameworksBuildPhase section */
 		F31EAADF2E231705002D2665 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F31EAAFB2E2317B1002D2665 /* ScrechKit in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -87,8 +85,6 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			name = "Archive Pro";
 			packageProductDependencies = (
 				F31EAAFA2E2317B1002D2665 /* ScrechKit */,
@@ -125,7 +121,7 @@
 			packageReferences = (
 				F31EAAF92E2317B1002D2665 /* XCRemoteSwiftPackageReference "ScrechKit" */,
 			);
-			preferredProjectObjectVersion = 77;
+			preferredProjectObjectVersion = 90;
 			productRefGroup = F31EAAE32E231705002D2665 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,30 +134,26 @@
 /* Begin PBXResourcesBuildPhase section */
 		F31EAAE02E231705002D2665 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F31EAAF82E23173B002D2665 /* Localizable.xcstrings in Resources */,
 				F31EAAF42E231709002D2665 /* Assets.xcassets in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F31EAADE2E231705002D2665 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				F31EAAF52E231709002D2665 /* Archive Pro.swift in Sources */,
 				F31EAAF62E231709002D2665 /* HomeView.swift in Sources */,
 				F31EAB002E239808002D2665 /* AppContainer.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		F31EAAEB2E231705002D2665 /* Debug */ = {
+		F31EAAEB2E231705002D2665 /* Debug configuration for PBXProject "Archive Pro" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -228,7 +220,7 @@
 			};
 			name = Debug;
 		};
-		F31EAAEC2E231705002D2665 /* Release */ = {
+		F31EAAEC2E231705002D2665 /* Release configuration for PBXProject "Archive Pro" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -287,7 +279,7 @@
 			};
 			name = Release;
 		};
-		F31EAAEE2E231705002D2665 /* Debug */ = {
+		F31EAAEE2E231705002D2665 /* Debug configuration for PBXNativeTarget "Archive Pro" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -300,7 +292,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = macOS.plist;
+				INFOPLIST_FILE = "Archive Pro/macOS.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Archive Pro";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -322,7 +314,7 @@
 			};
 			name = Debug;
 		};
-		F31EAAEF2E231705002D2665 /* Release */ = {
+		F31EAAEF2E231705002D2665 /* Release configuration for PBXNativeTarget "Archive Pro" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -335,7 +327,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = macOS.plist;
+				INFOPLIST_FILE = "Archive Pro/macOS.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Archive Pro";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -363,19 +355,17 @@
 		F31EAADD2E231705002D2665 /* Build configuration list for PBXProject "Archive Pro" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F31EAAEB2E231705002D2665 /* Debug */,
-				F31EAAEC2E231705002D2665 /* Release */,
+				F31EAAEB2E231705002D2665 /* Debug configuration for PBXProject "Archive Pro" */,
+				F31EAAEC2E231705002D2665 /* Release configuration for PBXProject "Archive Pro" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		F31EAAED2E231705002D2665 /* Build configuration list for PBXNativeTarget "Archive Pro" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F31EAAEE2E231705002D2665 /* Debug */,
-				F31EAAEF2E231705002D2665 /* Release */,
+				F31EAAEE2E231705002D2665 /* Debug configuration for PBXNativeTarget "Archive Pro" */,
+				F31EAAEF2E231705002D2665 /* Release configuration for PBXNativeTarget "Archive Pro" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
