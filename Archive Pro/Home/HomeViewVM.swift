@@ -8,12 +8,18 @@ final class HomeViewVM {
                 print("Name:", name)
             }
             
-            if provider.canLoadObject(ofClass: URL.self) {
-                _ = provider.loadObject(ofClass: URL.self) { url, error in
-                    if let url {
-                        print("Dropped file URL:", url)
-                    }
+            guard provider.canLoadObject(ofClass: URL.self) else {
+                return
+            }
+            
+            _ = provider.loadObject(ofClass: URL.self) { url, error in
+                guard let url else {
+                    return
                 }
+                
+                print("Dropped file URL:", url)
+                
+                self.fileSize(url)
             }
             
             //if provider.hasItemConformingToTypeIdentifier(type) {
@@ -21,6 +27,46 @@ final class HomeViewVM {
             //
             //    }
             //}
+        }
+    }
+    
+    private func isDirectory(_ url: URL) -> Bool {
+        let fm = FileManager.default
+        var isDir: ObjCBool = false
+        
+        fm.fileExists(
+            atPath: url.path,
+            isDirectory: &isDir
+        )
+        
+        return isDir.boolValue
+    }
+    
+    func fileSize(_ url: URL) {
+        let fm = FileManager.default
+        
+        let attributes = try? fm.attributesOfItem(atPath: url.path)
+        let size = attributes?[.size] as? Int ?? 0
+        
+        print(formatBytes(size))
+        //        return formatBytes(size)
+    }
+    
+    func createTmpDir() {
+        let fm = FileManager.default
+        let name = UUID().uuidString
+        
+        let tmpDir = fm.temporaryDirectory.appendingPathComponent(name)
+        
+        do {
+            try fm.createDirectory(
+                at: tmpDir,
+                withIntermediateDirectories: true
+            )
+            
+            openInFinder(rootedAt: tmpDir.path)
+        } catch {
+            print("Error:", error)
         }
     }
 }
