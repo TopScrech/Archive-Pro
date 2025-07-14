@@ -1,7 +1,7 @@
 import ScrechKit
 
 @Observable
-final class HomeViewVM {
+final class ArchiveVM {
     func handleDrop(_ providers: [NSItemProvider]) {
         for provider in providers {
             if let name = provider.suggestedName {
@@ -25,7 +25,17 @@ final class HomeViewVM {
                 
                 do {
                     guard
-                        let archiveURL = try self.createZipArchive(from: [url])
+                        let saveLocation = self.getSaveLocation()
+                    else {
+                        print("Failed to create tmp dir")
+                        return
+                    }
+                    
+                    guard
+                        let archiveURL = try self.createZipArchive(
+                            from: [url],
+                            at: saveLocation
+                        )
                     else {
                         return
                     }
@@ -67,14 +77,7 @@ final class HomeViewVM {
         )
     }
     
-    func createZipArchive(from sourceURLs: [URL]) throws -> URL? {
-        guard
-            let saveLocation = getSaveLocation()
-        else {
-            print("Failed to create tmp dir")
-            return nil
-        }
-        
+    func createZipArchive(from sourceURLs: [URL], at saveLocation: URL) throws -> URL? {
         let archiveURL = saveLocation.appendingPathComponent("archive.zip")
         
         // Extract folder and file names for grouping by folder

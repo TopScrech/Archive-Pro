@@ -2,7 +2,7 @@ import ScrechKit
 import UniformTypeIdentifiers
 
 struct HomeView: View {
-    @State private var vm = HomeViewVM()
+    @State private var archiveVM = ArchiveVM()
     
     @State private var isTargeted = false
     
@@ -18,7 +18,7 @@ struct HomeView: View {
         .background(.blue, in: .rect(cornerRadius: 20))
         .padding(8)
         .onDrop(of: [.fileURL], isTargeted: $isTargeted) { providers in
-            vm.handleDrop(providers)
+            archiveVM.handleDrop(providers)
             
             return true
         }
