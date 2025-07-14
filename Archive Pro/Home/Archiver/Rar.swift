@@ -5,6 +5,10 @@ extension Archiver {
         Bundle.main.url(forResource: "rar", withExtension: nil)
     }
     
+    static func embeddedUnrarURL() -> URL? {
+        Bundle.main.url(forResource: "unrar", withExtension: nil)
+    }
+    
     static func createRarArchive(from sourceURLs: [URL], at saveLocation: URL) throws -> URL? {
         guard let rarURL = embeddedRarURL() else {
             print("Error: Embedded rar not found")
@@ -34,5 +38,33 @@ extension Archiver {
         }
         
         return archiveURL
+    }
+    
+    static func extractRarArchive(
+        at archiveURL: URL,
+        to saveLocation: URL
+    ) throws -> Bool {
+        guard let rarURL = embeddedUnrarURL() else {
+            print("Error: Embedded rar not found")
+            return false
+        }
+        
+        try makeExecutable(rarURL)
+        
+        let process = Process()
+        process.executableURL = rarURL
+        process.arguments = ["x", "-o+", archiveURL.path, saveLocation.path]
+        
+        try FileManager.default.createDirectory(at: saveLocation, withIntermediateDirectories: true)
+        
+        try process.run()
+        process.waitUntilExit()
+        
+        if process.terminationStatus == 0 {
+            return true
+        } else {
+            print("Error: unrar failed with status", process.terminationStatus)
+            return false
+        }
     }
 }

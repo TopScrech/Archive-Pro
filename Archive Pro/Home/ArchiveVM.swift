@@ -38,6 +38,7 @@ final class ArchiveVM {
         switch archiveType(archiveURL) {
         case .sevenZ: if try Archiver.extract7zArchive(at: archiveURL, to: saveLocation) { return saveLocation }
         case .zip: if try Archiver.extractZipArchive(at: archiveURL, to: saveLocation) { return saveLocation }
+        case .rar: if try Archiver.extractRarArchive(at: archiveURL, to: saveLocation) { return saveLocation }
         default: return nil
         }
         
