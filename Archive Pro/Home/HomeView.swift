@@ -16,7 +16,7 @@ struct HomeView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.blue, in: .rect(cornerRadius: 16))
-        .padding()
+        .padding(8)
         .onDrop(of: [.fileURL], isTargeted: $isTargeted) { providers in
             vm.handleDrop(providers)
             
