@@ -5,7 +5,11 @@ extension Archiver {
         Bundle.main.url(forResource: "7zz", withExtension: nil)
     }
     
-    static func create7zArchive(from sourceURLs: [URL], at saveLocation: URL) throws -> URL? {
+    static func create7zArchive(
+        from sourceURLs: [URL],
+        at saveLocation: URL
+    ) throws -> URL? {
+        
         guard let sevenZURL = embedded7zzURL() else {
             print("Error: Embedded 7zz not found")
             return nil
@@ -14,6 +18,7 @@ extension Archiver {
         try makeExecutable(sevenZURL)
         
         let archiveURL = saveLocation.appendingPathComponent("archive.7z")
+        
         let folderGroups = Dictionary(grouping: sourceURLs) {
             $0.deletingLastPathComponent()
         }
@@ -40,6 +45,7 @@ extension Archiver {
         at archiveURL: URL,
         to saveLocation: URL
     ) throws -> Bool {
+        
         guard let sevenZURL = embedded7zzURL() else {
             print("Error: Embedded 7zz not found")
             return false
