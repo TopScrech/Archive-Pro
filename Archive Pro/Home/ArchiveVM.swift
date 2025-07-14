@@ -62,19 +62,8 @@ final class ArchiveVM {
             createTmpDir()
             
         case .downloads:
-            downloadsDir()
+            URL.downloadsDirectory
         }
-    }
-    
-    private func downloadsDir() -> URL? {
-        let fm = FileManager.default
-        
-        return try? fm.url(
-            for: .downloadsDirectory,
-            in: .userDomainMask,
-            appropriateFor: nil,
-            create: false
-        )
     }
     
     func createZipArchive(from sourceURLs: [URL], at saveLocation: URL) throws -> URL? {
