@@ -61,18 +61,13 @@ final class ArchiveVM {
         at saveLocation: URL
     ) throws -> URL? {
         switch ValueStore().archiveFormat {
-        case .tar:
-            try Archiver.createTarArchive(
-                from: sourceURLs,
-                at: saveLocation
-            )
+        case .tar: try Archiver.createTarArchive(from: sourceURLs, at: saveLocation)
+        case .zip: try Archiver.createZipArchive(from: sourceURLs, at: saveLocation)
+        case .tarGz: try Archiver.createTarGzArchive(from: sourceURLs, at: saveLocation)
+        case .tarBz2: try Archiver.createTarBz2Archive(from: sourceURLs, at: saveLocation)
             
-        case .zip:
-            try Archiver.createZipArchive(
-                from: sourceURLs,
-                at: saveLocation
-            )
-            
+//        case .bz2: return try Archiver.createBz2CompressedFiles(from: sourceURLs, at: saveLocation)
+//        case .gz: return try Archiver.createGzCompressedFiles(from: sourceURLs, at: saveLocation)
         }
     }
     
