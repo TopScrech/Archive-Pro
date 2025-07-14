@@ -24,6 +24,9 @@
 		F32BF87D2E252C3700936B42 /* Tar BZ 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32BF87C2E252C3700936B42 /* Tar BZ 2.swift */; };
 		F32BF87F2E252CEC00936B42 /* Tar XZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32BF87E2E252CEC00936B42 /* Tar XZ.swift */; };
 		F32BF8812E252D5F00936B42 /* Cpio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32BF8802E252D5F00936B42 /* Cpio.swift */; };
+		F32BF8852E252EF900936B42 /* Rar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32BF8842E252EF900936B42 /* Rar.swift */; };
+		F3C53ACD2E2532FE00F1ECE7 /* rar in Resources */ = {isa = PBXBuildFile; fileRef = F3C53ACC2E2532FE00F1ECE7 /* rar */; };
+		F3C53ACF2E25330A00F1ECE7 /* unrar in Resources */ = {isa = PBXBuildFile; fileRef = F3C53ACE2E25330A00F1ECE7 /* unrar */; };
 		F3F50D052E24476C00DFA2C5 /* NavDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F50D042E24476C00DFA2C5 /* NavDestination.swift */; };
 		F3F50D062E24476C00DFA2C5 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F50D022E24476C00DFA2C5 /* Sidebar.swift */; };
 		F3F50D072E24476C00DFA2C5 /* NavDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F50D002E24476C00DFA2C5 /* NavDetail.swift */; };
@@ -53,6 +56,9 @@
 		F32BF87C2E252C3700936B42 /* Tar BZ 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tar BZ 2.swift"; sourceTree = "<group>"; };
 		F32BF87E2E252CEC00936B42 /* Tar XZ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tar XZ.swift"; sourceTree = "<group>"; };
 		F32BF8802E252D5F00936B42 /* Cpio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cpio.swift; sourceTree = "<group>"; };
+		F32BF8842E252EF900936B42 /* Rar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rar.swift; sourceTree = "<group>"; };
+		F3C53ACC2E2532FE00F1ECE7 /* rar */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = rar; sourceTree = "<group>"; };
+		F3C53ACE2E25330A00F1ECE7 /* unrar */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = unrar; sourceTree = "<group>"; };
 		F3F50D002E24476C00DFA2C5 /* NavDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavDetail.swift; sourceTree = "<group>"; };
 		F3F50D012E24476C00DFA2C5 /* NavModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavModel.swift; sourceTree = "<group>"; };
 		F3F50D022E24476C00DFA2C5 /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
@@ -100,6 +106,7 @@
 				F31EAAFD2E2397E0002D2665 /* macOS.plist */,
 				F31EAAF72E23173B002D2665 /* Localizable.xcstrings */,
 				F31EAAF12E231709002D2665 /* Assets.xcassets */,
+				F3C53ACB2E2532F400F1ECE7 /* Tools */,
 				F3F50D0E2E2456AC00DFA2C5 /* Home */,
 				F3F50D0F2E2456B300DFA2C5 /* Settings */,
 				F3F50D102E2456B900DFA2C5 /* About */,
@@ -126,12 +133,22 @@
 				F32BF86E2E250CF800936B42 /* Archiver.swift */,
 				F32BF86B2E250BE500936B42 /* Zip.swift */,
 				F32BF8722E25247800936B42 /* Tar.swift */,
+				F32BF8842E252EF900936B42 /* Rar.swift */,
 				F32BF87A2E252C2C00936B42 /* Tar GZ.swift */,
 				F32BF87C2E252C3700936B42 /* Tar BZ 2.swift */,
 				F32BF87E2E252CEC00936B42 /* Tar XZ.swift */,
 				F32BF8802E252D5F00936B42 /* Cpio.swift */,
 			);
 			path = Archiver;
+			sourceTree = "<group>";
+		};
+		F3C53ACB2E2532F400F1ECE7 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				F3C53ACE2E25330A00F1ECE7 /* unrar */,
+				F3C53ACC2E2532FE00F1ECE7 /* rar */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 		F3F50D0E2E2456AC00DFA2C5 /* Home */ = {
@@ -224,6 +241,8 @@
 		F31EAAE02E231705002D2665 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
+				F3C53ACD2E2532FE00F1ECE7 /* rar in Resources */,
+				F3C53ACF2E25330A00F1ECE7 /* unrar in Resources */,
 				F31EAAF82E23173B002D2665 /* Localizable.xcstrings in Resources */,
 				F31EAAF42E231709002D2665 /* Assets.xcassets in Resources */,
 			);
@@ -235,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			files = (
 				F32BF86A2E24FD9E00936B42 /* SavingLocation.swift in Sources */,
+				F32BF8852E252EF900936B42 /* Rar.swift in Sources */,
 				F32BF8682E24FD6400936B42 /* ValueStore.swift in Sources */,
 				F31EAAF52E231709002D2665 /* ArchivePro.swift in Sources */,
 				F3F50D052E24476C00DFA2C5 /* NavDestination.swift in Sources */,
@@ -399,7 +419,7 @@
 				ENABLE_FILE_ACCESS_DOWNLOADS_FOLDER = readwrite;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
-				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
 				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
@@ -446,7 +466,7 @@
 				ENABLE_FILE_ACCESS_DOWNLOADS_FOLDER = readwrite;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
-				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
 				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;

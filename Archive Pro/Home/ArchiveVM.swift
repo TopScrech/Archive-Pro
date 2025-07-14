@@ -68,6 +68,7 @@ final class ArchiveVM {
         case .tarBz2: try Archiver.createTarBz2Archive(from: sourceURLs, at: saveLocation)
         case .tarXz: try Archiver.createTarXzArchive(from: sourceURLs, at: saveLocation)
         case .cpio: try Archiver.createCpioArchive(from: sourceURLs, at: saveLocation)
+        case .rar: try Archiver.createRarArchive(from: sourceURLs, at: saveLocation)
         }
     }
     
