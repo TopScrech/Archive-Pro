@@ -66,44 +66,13 @@ final class HomeViewVM {
             }
         }
         
-        openInFinder(rootedAt: archiveURL.deletingLastPathComponent().path)
+        openInFinder(
+            rootedAt: archiveURL.deletingLastPathComponent().path
+        )
+        
         return archiveURL
     }
-    
-    // Saves the file itself to the tmp dir
-    //    func createZipArchive(from sourceURLs: [URL]) throws -> URL? {
-    //        guard let tempDir = createTmpDir() else {
-    //            print("Failed to create temporary directory")
-    //            return nil
-    //        }
-    //
-    //        let archiveURL = tempDir.appendingPathComponent("archive.zip")
-    //
-    //        let fm = FileManager.default
-    //        let fileNames = sourceURLs.map { $0.lastPathComponent }
-    //
-    //        for url in sourceURLs {
-    //            let destination = tempDir.appendingPathComponent(url.lastPathComponent)
-    //            try fm.copyItem(at: url, to: destination)
-    //        }
-    //
-    //        let process = Process()
-    //        process.executableURL = URL(fileURLWithPath: "/usr/bin/zip")
-    //        process.currentDirectoryURL = tempDir
-    //        process.arguments = ["-r", archiveURL.lastPathComponent] + fileNames
-    //
-    //        try process.run()
-    //        process.waitUntilExit()
-    //
-    //        guard process.terminationStatus == 0 else {
-    //            print("Zip command failed")
-    //            return nil
-    //        }
-    //
-    //        openInFinder(rootedAt: archiveURL.deletingLastPathComponent().path)
-    //        return archiveURL
-    //    }
-    
+        
     private func isDirectory(_ url: URL) -> Bool {
         let fm = FileManager.default
         var isDir: ObjCBool = false
