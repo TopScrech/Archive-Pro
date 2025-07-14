@@ -65,9 +65,7 @@ final class ArchiveVM {
         case .zip: try Archiver.createZipArchive(from: sourceURLs, at: saveLocation)
         case .tarGz: try Archiver.createTarGzArchive(from: sourceURLs, at: saveLocation)
         case .tarBz2: try Archiver.createTarBz2Archive(from: sourceURLs, at: saveLocation)
-            
-//        case .bz2: return try Archiver.createBz2CompressedFiles(from: sourceURLs, at: saveLocation)
-//        case .gz: return try Archiver.createGzCompressedFiles(from: sourceURLs, at: saveLocation)
+        case .tarXz: try Archiver.createTarXzArchive(from: sourceURLs, at: saveLocation)
         }
     }
     

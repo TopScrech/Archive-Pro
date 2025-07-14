@@ -2,7 +2,7 @@ import SwiftUI
 
 enum ArchiveFormat: String, Identifiable, CaseIterable {
     case zip, tar,
-         tarGz, tarBz2
+         tarGz, tarBz2, tarXz
     
     var id: String {
         self.rawValue
