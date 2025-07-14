@@ -36,7 +36,10 @@ extension Archiver {
         return archiveURL
     }
     
-    static func extract7zArchive(at archiveURL: URL, to destinationURL: URL) throws -> Bool {
+    static func extract7zArchive(
+        at archiveURL: URL,
+        to saveLocation: URL
+    ) throws -> Bool {
         guard let sevenZURL = embedded7zzURL() else {
             print("Error: Embedded 7zz not found")
             return false
@@ -46,8 +49,8 @@ extension Archiver {
         
         let process = Process()
         process.executableURL = sevenZURL
-        process.currentDirectoryURL = destinationURL.deletingLastPathComponent()
-        process.arguments = ["x", archiveURL.path, "-o" + destinationURL.path, "-y"]
+        process.currentDirectoryURL = saveLocation.deletingLastPathComponent()
+        process.arguments = ["x", archiveURL.path, "-o" + saveLocation.path, "-y"]
         
         try process.run()
         process.waitUntilExit()

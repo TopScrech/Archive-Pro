@@ -2,6 +2,35 @@ import ScrechKit
 
 @Observable
 final class ArchiveVM {
+    func isArchive(_ url: URL) -> Bool {
+        let archiveExtensions: Set<String> = [
+            "zip", "rar", "7z", "tar", "gz", "bz2", "xz", "lz", "lzma", "zst", "tgz", "tbz2", "txz", "tlz", "car"
+        ]
+        
+        let ext = url.pathExtension.lowercased()
+        
+        if archiveExtensions.contains(ext) {
+            return true
+        }
+        
+        return false
+    }
+    
+    func unarchive(
+        at archiveURL: URL,
+        to saveLocation: URL
+    ) throws -> URL? {
+        
+        if try Archiver.extract7zArchive(
+            at: archiveURL,
+            to: saveLocation
+        ) {
+            return saveLocation
+        }
+        
+        return nil
+    }
+    
     func handleDrop(_ providers: [NSItemProvider]) {
         for provider in providers {
             if let name = provider.suggestedName {
@@ -24,19 +53,37 @@ final class ArchiveVM {
                 print("Dropped file URL:", url)
                 
                 do {
-                    guard
-                        let saveLocation = self.getSaveLocation(),
-                        let archiveURL = try self.createArchive(
-                            from: [url],
-                            at: saveLocation
+                    if self.isArchive(url) {
+                        // Dearchive
+                        guard
+                            let archiveURL = self.getSaveLocation(),
+                            let saveLocation = try self.unarchive(
+                                at: url,
+                                to: archiveURL
+                            )
+                        else {
+                            return
+                        }
+                        
+                        openInFinder(
+                            rootedAt: saveLocation.path
                         )
-                    else {
-                        return
+                    } else {
+                        // Archive
+                        guard
+                            let saveLocation = self.getSaveLocation(),
+                            let archiveURL = try self.createArchive(
+                                from: [url],
+                                at: saveLocation
+                            )
+                        else {
+                            return
+                        }
+                        
+                        openInFinder(
+                            rootedAt: archiveURL.deletingLastPathComponent().path
+                        )
                     }
-                    
-                    openInFinder(
-                        rootedAt: archiveURL.deletingLastPathComponent().path
-                    )
                 } catch {
                     print(error)
                 }
