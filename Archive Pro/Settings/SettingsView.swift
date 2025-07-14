@@ -21,7 +21,7 @@ struct SettingsView: View {
             Section {
                 Picker(selection: $store.archiveFormat) {
                     ForEach(ArchiveFormat.allCases) { format in
-                        Text(format.rawValue.capitalized)
+                        Text(format.name)
                             .tag(format)
                     }
                 } label: {
@@ -35,12 +35,6 @@ struct SettingsView: View {
                     vm.openTmpDir()
                 } label: {
                     Label("Open the temporary directory", systemImage: "folder.badge.gearshape")
-                }
-                
-                Button {
-                    vm.clearTmpDir()
-                } label: {
-                    Label("Clear the temporary directory", systemImage: "trash")
                 }
             }
         }

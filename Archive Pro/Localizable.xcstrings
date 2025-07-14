@@ -21,6 +21,7 @@
 
     },
     "Clear the temporary directory" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
