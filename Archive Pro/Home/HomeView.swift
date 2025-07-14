@@ -11,7 +11,7 @@ struct HomeView: View {
             if isTargeted {
                 Text("Targeted")
             } else {
-                
+                Text("Drag & Drop any files or folders here")
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
