@@ -32,4 +32,27 @@ extension Archiver {
         
         return archiveURL
     }
+    
+    static func extractZipArchive(
+        at archiveURL: URL,
+        to saveLocation: URL
+    ) throws -> Bool {
+        
+        let fm = FileManager.default
+        try fm.createDirectory(at: saveLocation, withIntermediateDirectories: true)
+        
+        let process = Process()
+        process.executableURL = URL(fileURLWithPath: "/usr/bin/unzip")
+        process.arguments = [archiveURL.path, "-d", saveLocation.path]
+        
+        try process.run()
+        process.waitUntilExit()
+        
+        guard process.terminationStatus == 0 else {
+            print("Error: unzip failed with status", process.terminationStatus)
+            return false
+        }
+        
+        return true
+    }
 }
