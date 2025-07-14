@@ -18,6 +18,18 @@ struct SettingsView: View {
                 .pickerStyle(.inline)
             }
             
+            Section {
+                Picker(selection: $store.archiveFormat) {
+                    ForEach(ArchiveFormat.allCases) { format in
+                        Text(format.rawValue.capitalized)
+                            .tag(format)
+                    }
+                } label: {
+                    Label("Archive format", systemImage: "archivebox")
+                }
+                .pickerStyle(.inline)
+            }
+            
             Section("Debug") {
                 Button {
                     vm.openTmpDir()
