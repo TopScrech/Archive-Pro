@@ -39,7 +39,9 @@ final class HomeViewVM {
     }
     
     func createZipArchive(from sourceURLs: [URL]) throws -> URL? {
-        guard let tempDir = createTmpDir() else {
+        guard
+            let tempDir = createTmpDir()
+        else {
             print("Failed to create tmp dir")
             return nil
         }
@@ -60,7 +62,9 @@ final class HomeViewVM {
             try process.run()
             process.waitUntilExit()
             
-            guard process.terminationStatus == 0 else {
+            guard
+                process.terminationStatus == 0
+            else {
                 print("Zip command failed for folder:", folderURL.path)
                 return nil
             }
