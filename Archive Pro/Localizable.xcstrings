@@ -37,6 +37,9 @@
         }
       }
     },
+    "Downloads" : {
+
+    },
     "Home" : {
 
     },
@@ -50,6 +53,9 @@
         }
       }
     },
+    "Saving location" : {
+
+    },
     "Settings" : {
       "localizations" : {
         "ru" : {
@@ -61,6 +67,9 @@
       }
     },
     "Targeted" : {
+
+    },
+    "Temporary Directory" : {
 
     }
   },

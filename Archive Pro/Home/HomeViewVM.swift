@@ -24,7 +24,15 @@ final class HomeViewVM {
                 print("Dropped file URL:", url)
                 
                 do {
-                    let _ = try self.createZipArchive(from: [url])
+                    guard
+                        let archiveURL = try self.createZipArchive(from: [url])
+                    else {
+                        return
+                    }
+                    
+                    openInFinder(
+                        rootedAt: archiveURL.deletingLastPathComponent().path
+                    )
                 } catch {
                     print(error)
                 }
@@ -38,15 +46,36 @@ final class HomeViewVM {
         }
     }
     
+    func getSaveLocation() -> URL? {
+        switch ValueStore().savingLocation {
+        case .tmpDir:
+            createTmpDir()
+            
+        case .downloads:
+            downloadsDir()
+        }
+    }
+    
+    private func downloadsDir() -> URL? {
+        let fm = FileManager.default
+        
+        return try? fm.url(
+            for: .downloadsDirectory,
+            in: .userDomainMask,
+            appropriateFor: nil,
+            create: false
+        )
+    }
+    
     func createZipArchive(from sourceURLs: [URL]) throws -> URL? {
         guard
-            let tempDir = createTmpDir()
+            let saveLocation = getSaveLocation()
         else {
             print("Failed to create tmp dir")
             return nil
         }
         
-        let archiveURL = tempDir.appendingPathComponent("archive.zip")
+        let archiveURL = saveLocation.appendingPathComponent("archive.zip")
         
         // Extract folder and file names for grouping by folder
         let folderGroups = Dictionary(grouping: sourceURLs) {
@@ -70,13 +99,9 @@ final class HomeViewVM {
             }
         }
         
-        openInFinder(
-            rootedAt: archiveURL.deletingLastPathComponent().path
-        )
-        
         return archiveURL
     }
-        
+    
     private func isDirectory(_ url: URL) -> Bool {
         let fm = FileManager.default
         var isDir: ObjCBool = false

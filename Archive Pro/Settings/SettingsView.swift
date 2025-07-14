@@ -2,9 +2,22 @@ import SwiftUI
 
 struct SettingsView: View {
     @State private var vm = SettingsVM()
+    @EnvironmentObject private var store: ValueStore
     
     var body: some View {
         Form {
+            Section {
+                Picker(selection: $store.savingLocation) {
+                    ForEach(SavingLocation.allCases) { loc in
+                        Text(loc.name)
+                            .tag(loc)
+                    }
+                } label: {
+                    Label("Saving location", systemImage: "folder")
+                }
+                .pickerStyle(.inline)
+            }
+            
             Section("Debug") {
                 Button {
                     vm.openTmpDir()
@@ -24,4 +37,5 @@ struct SettingsView: View {
 
 #Preview {
     SettingsView()
+        .environmentObject(ValueStore())
 }
