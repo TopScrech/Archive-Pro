@@ -16,16 +16,28 @@ final class ArchiveVM {
         return false
     }
     
+    func archiveType(_ url: URL) -> ArchiveFormat? {
+        switch url.pathExtension.lowercased() {
+        case "7z": .sevenZ
+        case "cpio": .cpio
+        case "rar": .rar
+        case "tar": .tar
+        case "zip": .zip
+        case "bz2": .tarBz2
+        case "xz": .tarXz
+        case "gz": .tarGz
+        default: nil
+        }
+    }
+    
     func unarchive(
         at archiveURL: URL,
         to saveLocation: URL
     ) throws -> URL? {
         
-        if try Archiver.extract7zArchive(
-            at: archiveURL,
-            to: saveLocation
-        ) {
-            return saveLocation
+        switch archiveType(archiveURL) {
+        case .sevenZ: if try Archiver.extract7zArchive(at: archiveURL, to: saveLocation) { return saveLocation }
+        default: return nil
         }
         
         return nil
