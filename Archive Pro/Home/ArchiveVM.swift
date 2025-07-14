@@ -25,18 +25,12 @@ final class ArchiveVM {
                 
                 do {
                     guard
-                        let saveLocation = self.getSaveLocation()
+                        let saveLocation = self.getSaveLocation(),
+                        let archiveURL = try self.createArchive(
+                            from: [url],
+                            at: saveLocation
+                        )
                     else {
-                        print("Failed to create tmp dir")
-                        return
-                    }
-                    
-                    let archiveURL = try self.createArchive(
-                        from: [url],
-                        at: saveLocation
-                    )
-                    
-                    guard let archiveURL else {
                         return
                     }
                     
