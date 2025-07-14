@@ -23,6 +23,7 @@
 		F32BF87B2E252C2C00936B42 /* Tar GZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32BF87A2E252C2C00936B42 /* Tar GZ.swift */; };
 		F32BF87D2E252C3700936B42 /* Tar BZ 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32BF87C2E252C3700936B42 /* Tar BZ 2.swift */; };
 		F32BF87F2E252CEC00936B42 /* Tar XZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32BF87E2E252CEC00936B42 /* Tar XZ.swift */; };
+		F32BF8812E252D5F00936B42 /* Cpio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32BF8802E252D5F00936B42 /* Cpio.swift */; };
 		F3F50D052E24476C00DFA2C5 /* NavDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F50D042E24476C00DFA2C5 /* NavDestination.swift */; };
 		F3F50D062E24476C00DFA2C5 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F50D022E24476C00DFA2C5 /* Sidebar.swift */; };
 		F3F50D072E24476C00DFA2C5 /* NavDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F50D002E24476C00DFA2C5 /* NavDetail.swift */; };
@@ -51,6 +52,7 @@
 		F32BF87A2E252C2C00936B42 /* Tar GZ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tar GZ.swift"; sourceTree = "<group>"; };
 		F32BF87C2E252C3700936B42 /* Tar BZ 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tar BZ 2.swift"; sourceTree = "<group>"; };
 		F32BF87E2E252CEC00936B42 /* Tar XZ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tar XZ.swift"; sourceTree = "<group>"; };
+		F32BF8802E252D5F00936B42 /* Cpio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cpio.swift; sourceTree = "<group>"; };
 		F3F50D002E24476C00DFA2C5 /* NavDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavDetail.swift; sourceTree = "<group>"; };
 		F3F50D012E24476C00DFA2C5 /* NavModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavModel.swift; sourceTree = "<group>"; };
 		F3F50D022E24476C00DFA2C5 /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				F32BF87A2E252C2C00936B42 /* Tar GZ.swift */,
 				F32BF87C2E252C3700936B42 /* Tar BZ 2.swift */,
 				F32BF87E2E252CEC00936B42 /* Tar XZ.swift */,
+				F32BF8802E252D5F00936B42 /* Cpio.swift */,
 			);
 			path = Archiver;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				F32BF87D2E252C3700936B42 /* Tar BZ 2.swift in Sources */,
 				F3F50D082E24476C00DFA2C5 /* SidebarLink.swift in Sources */,
 				F3F50D092E24476C00DFA2C5 /* NavModel.swift in Sources */,
+				F32BF8812E252D5F00936B42 /* Cpio.swift in Sources */,
 				F3F50D0D2E2451B700DFA2C5 /* AboutView.swift in Sources */,
 				F31EAAF62E231709002D2665 /* HomeView.swift in Sources */,
 				F32BF87F2E252CEC00936B42 /* Tar XZ.swift in Sources */,
