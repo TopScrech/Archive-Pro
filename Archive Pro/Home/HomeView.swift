@@ -8,10 +8,6 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-//            Button("Test") {
-//                vm.createTmpDir()
-//            }
-            
             if isTargeted {
                 Text("Targeted")
             } else {
