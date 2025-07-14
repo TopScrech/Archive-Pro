@@ -2,13 +2,40 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {
-
+      "shouldTranslate" : false
     },
     "About" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "О приложении"
+          }
+        }
+      }
     },
     "Choose a tab from the sidebar" : {
 
+    },
+    "Clear the temporary directory" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Очистить временный каталог"
+          }
+        }
+      }
+    },
+    "Debug" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отладка"
+          }
+        }
+      }
     },
     "Hello, World!" : {
 
@@ -16,8 +43,25 @@
     "Home" : {
 
     },
+    "Open the temporary directory" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открыть временный каталог"
+          }
+        }
+      }
+    },
     "Settings" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройки"
+          }
+        }
+      }
     },
     "Targeted" : {
 
