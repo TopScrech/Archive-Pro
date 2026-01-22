@@ -1,17 +1,14 @@
 import Foundation
+import OSLog
 
 extension Archiver {
     static func embedded7zzURL() -> URL? {
         Bundle.main.url(forResource: "7zz", withExtension: nil)
     }
     
-    static func create7zArchive(
-        from sourceURLs: [URL],
-        at saveLocation: URL
-    ) throws -> URL? {
-        
+    static func create7zArchive(from sourceURLs: [URL], at saveLocation: URL) throws -> URL? {
         guard let sevenZURL = embedded7zzURL() else {
-            print("Error: Embedded 7zz not found")
+            Logger().error("Embedded 7zz not found")
             return nil
         }
         
@@ -41,13 +38,9 @@ extension Archiver {
         return archiveURL
     }
     
-    static func extract7zArchive(
-        at archiveURL: URL,
-        to saveLocation: URL
-    ) throws -> Bool {
-        
+    static func extract7zArchive(at archiveURL: URL, to saveLocation: URL) throws -> Bool {
         guard let sevenZURL = embedded7zzURL() else {
-            print("Error: Embedded 7zz not found")
+            Logger().error("Embedded 7zz not found")
             return false
         }
         

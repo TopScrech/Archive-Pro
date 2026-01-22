@@ -1,11 +1,7 @@
 import Foundation
 
 extension Archiver {
-    static func createTarGzArchive(
-        from sourceURLs: [URL],
-        at saveLocation: URL
-    ) throws -> URL? {
-        
+    static func createTarGzArchive(from sourceURLs: [URL], at saveLocation: URL) throws -> URL? {
         let archiveURL = saveLocation.appendingPathComponent("archive.tar.gz")
         
         let folderGroups = Dictionary(grouping: sourceURLs) {
@@ -30,5 +26,23 @@ extension Archiver {
         }
         
         return archiveURL
+    }
+    
+    static func extractTarGzArchive(at archiveURL: URL, to saveLocation: URL) throws -> Bool {
+        try FileManager.default.createDirectory(at: saveLocation, withIntermediateDirectories: true)
+        
+        let process = Process()
+        process.executableURL = URL(fileURLWithPath: "/usr/bin/tar")
+        process.arguments = ["-xzf", archiveURL.path, "-C", saveLocation.path]
+        
+        try process.run()
+        process.waitUntilExit()
+        
+        guard process.terminationStatus == 0 else {
+            print("Tar GZ extraction failed")
+            return false
+        }
+        
+        return true
     }
 }

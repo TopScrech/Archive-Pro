@@ -1,4 +1,5 @@
 import Foundation
+import OSLog
 
 extension Archiver {
     static func embeddedRarURL() -> URL? {
@@ -11,7 +12,7 @@ extension Archiver {
     
     static func createRarArchive(from sourceURLs: [URL], at saveLocation: URL) throws -> URL? {
         guard let rarURL = embeddedRarURL() else {
-            print("Error: Embedded rar not found")
+            Logger().error("Embedded rar not found")
             return nil
         }
         
@@ -40,12 +41,9 @@ extension Archiver {
         return archiveURL
     }
     
-    static func extractRarArchive(
-        at archiveURL: URL,
-        to saveLocation: URL
-    ) throws -> Bool {
+    static func extractRarArchive( at archiveURL: URL, to saveLocation: URL) throws -> Bool {
         guard let rarURL = embeddedUnrarURL() else {
-            print("Error: Embedded rar not found")
+            Logger().error("Embedded rar not found")
             return false
         }
         
@@ -63,7 +61,7 @@ extension Archiver {
         if process.terminationStatus == 0 {
             return true
         } else {
-            print("Error: unrar failed with status", process.terminationStatus)
+            Logger().error("Unrar failed with status \(process.terminationStatus)")
             return false
         }
     }

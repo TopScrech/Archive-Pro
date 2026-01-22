@@ -1,11 +1,8 @@
 import Foundation
+import OSLog
 
 extension Archiver {
-    static func createZipArchive(
-        from sourceURLs: [URL],
-        at saveLocation: URL
-    ) throws -> URL? {
-        
+    static func createZipArchive(from sourceURLs: [URL], at saveLocation: URL) throws -> URL? {
         let archiveURL = saveLocation.appendingPathComponent("archive.zip")
         
         // Extract folder and file names for grouping by folder
@@ -25,7 +22,7 @@ extension Archiver {
             guard
                 process.terminationStatus == 0
             else {
-                print("Zip command failed for folder:", folderURL.path)
+                Logger().error("Zip command failed for folder: \(folderURL.path)")
                 return nil
             }
         }
@@ -33,13 +30,8 @@ extension Archiver {
         return archiveURL
     }
     
-    static func extractZipArchive(
-        at archiveURL: URL,
-        to saveLocation: URL
-    ) throws -> Bool {
-        
-        let fm = FileManager.default
-        try fm.createDirectory(at: saveLocation, withIntermediateDirectories: true)
+    static func extractZipArchive(at archiveURL: URL, to saveLocation: URL) throws -> Bool {
+        try FileManager.default.createDirectory(at: saveLocation, withIntermediateDirectories: true)
         
         let process = Process()
         process.executableURL = URL(fileURLWithPath: "/usr/bin/unzip")
@@ -49,7 +41,7 @@ extension Archiver {
         process.waitUntilExit()
         
         guard process.terminationStatus == 0 else {
-            print("Error: unzip failed with status", process.terminationStatus)
+            Logger().error("Unzip failed with status \(process.terminationStatus)")
             return false
         }
         

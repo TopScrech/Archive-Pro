@@ -1,4 +1,4 @@
-import SwiftUI
+import ScrechKit
 
 struct SettingsView: View {
     @State private var vm = SettingsVM()
@@ -20,7 +20,7 @@ struct SettingsView: View {
             
             Section {
                 Picker(selection: $store.archiveFormat) {
-                    ForEach(ArchiveFormat.allCases) { format in
+                    ForEach(ArchiveFormat.creatableCases) { format in
                         Text(format.name)
                             .tag(format)
                     }

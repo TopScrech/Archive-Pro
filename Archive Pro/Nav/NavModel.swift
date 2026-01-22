@@ -1,4 +1,5 @@
 import SwiftUI
+import OSLog
 
 @Observable
 final class NavModel: Codable {
@@ -54,7 +55,7 @@ final class NavModel: Codable {
         do {
             try FileManager.default.removeItem(at: Self.dataUrl)
         } catch {
-            print(error)
+            Logger().error("\(error)")
         }
     }
     

@@ -1,4 +1,5 @@
 import SwiftUI
+import OSLog
 
 struct AppContainer: View {
     @Environment(NavModel.self) private var nav
@@ -22,7 +23,7 @@ struct AppContainer: View {
         do {
             try nav.save()
         } catch {
-            print(error)
+            Logger().error("\(error)")
         }
     }
 }

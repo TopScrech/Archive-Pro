@@ -1,119 +1,72 @@
 import ScrechKit
+import OSLog
 
 @Observable
 final class ArchiveVM {
     func isArchive(_ url: URL) -> Bool {
-        let archiveExtensions: Set<String> = [
-            "zip", "rar", "7z", "tar", "gz", "bz2", "xz", "lz", "lzma", "zst", "tgz", "tbz2", "txz", "tlz", "car"
-        ]
-        
-        let ext = url.pathExtension.lowercased()
-        
-        if archiveExtensions.contains(ext) {
-            return true
-        }
-        
-        return false
+        archiveType(url) != nil
     }
     
     func archiveType(_ url: URL) -> ArchiveFormat? {
-        switch url.pathExtension.lowercased() {
-        case "7z": .sevenZ
-        case "cpio": .cpio
-        case "rar": .rar
-        case "tar": .tar
-        case "zip": .zip
-        case "bz2": .tarBz2
-        case "xz": .tarXz
-        case "gz": .tarGz
-        default: nil
+        let ext = url.pathExtension.lowercased()
+        let parentExt = url.deletingPathExtension().pathExtension.lowercased()
+        
+        switch ext {
+        case "7z": return .sevenZ
+        case "aar": return .appleArchive
+        case "aea": return .appleEncryptedArchive
+        case "cpio": return .cpio
+        case "pkg", "xar": return .xar
+        case "rar": return .rar
+        case "tar": return .tar
+        case "tbz2": return .tarBz2
+        case "tgz": return .tarGz
+        case "txz": return .tarXz
+        case "xip": return .xip
+        case "zip": return .zip
+        case "bz2" where parentExt == "tar": return .tarBz2
+        case "gz" where parentExt == "tar": return .tarGz
+        case "xz" where parentExt == "tar": return .tarXz
+        default: return nil
         }
     }
     
     func unarchive(
         at archiveURL: URL,
-        to saveLocation: URL
+        to saveLocation: URL,
+        password: String? = nil
     ) throws -> URL? {
         
         switch archiveType(archiveURL) {
         case .sevenZ: if try Archiver.extract7zArchive(at: archiveURL, to: saveLocation) { return saveLocation }
         case .zip: if try Archiver.extractZipArchive(at: archiveURL, to: saveLocation) { return saveLocation }
         case .rar: if try Archiver.extractRarArchive(at: archiveURL, to: saveLocation) { return saveLocation }
+        case .tar: if try Archiver.extractTarArchive(at: archiveURL, to: saveLocation) { return saveLocation }
+        case .tarGz: if try Archiver.extractTarGzArchive(at: archiveURL, to: saveLocation) { return saveLocation }
+        case .tarBz2: if try Archiver.extractTarBz2Archive(at: archiveURL, to: saveLocation) { return saveLocation }
+        case .tarXz: if try Archiver.extractTarXzArchive(at: archiveURL, to: saveLocation) { return saveLocation }
+        case .cpio: if try Archiver.extractCpioArchive(at: archiveURL, to: saveLocation) { return saveLocation }
+        case .appleArchive: if try Archiver.extractAppleArchive(at: archiveURL, to: saveLocation) { return saveLocation }
+        case .appleEncryptedArchive:
+            if try Archiver.extractAppleEncryptedArchive(
+                at: archiveURL,
+                to: saveLocation,
+                password: password ?? ""
+            ) {
+                return saveLocation
+            }
+        case .xar: if try Archiver.extractXarArchive(at: archiveURL, to: saveLocation) { return saveLocation }
+        case .xip: if try Archiver.extractXipArchive(at: archiveURL, to: saveLocation) { return saveLocation }
         default: return nil
         }
         
         return nil
     }
     
-    func handleDrop(_ providers: [NSItemProvider]) {
-        for provider in providers {
-            if let name = provider.suggestedName {
-                print("Name:", name)
-            }
-            
-            guard provider.canLoadObject(ofClass: URL.self) else {
-                return
-            }
-            
-            _ = provider.loadObject(ofClass: URL.self) { url, error in
-                if let error {
-                    print("Error:", error)
-                }
-                
-                guard let url else {
-                    return
-                }
-                
-                print("Dropped file URL:", url)
-                
-                do {
-                    if self.isArchive(url) {
-                        // Dearchive
-                        guard
-                            let archiveURL = self.getSaveLocation(),
-                            let saveLocation = try self.unarchive(
-                                at: url,
-                                to: archiveURL
-                            )
-                        else {
-                            return
-                        }
-                        
-                        openInFinder(
-                            rootedAt: saveLocation.path
-                        )
-                    } else {
-                        // Archive
-                        guard
-                            let saveLocation = self.getSaveLocation(),
-                            let archiveURL = try self.createArchive(
-                                from: [url],
-                                at: saveLocation
-                            )
-                        else {
-                            return
-                        }
-                        
-                        openInFinder(
-                            rootedAt: archiveURL.deletingLastPathComponent().path
-                        )
-                    }
-                } catch {
-                    print(error)
-                }
-            }
-            
-            //if provider.hasItemConformingToTypeIdentifier(type) {
-            //    provider.loadDataRepresentation(forTypeIdentifier: type) { data, error in
-            //
-            //    }
-            //}
-        }
-    }
-    
     func createArchive(
         from sourceURLs: [URL],
-        at saveLocation: URL
+        at saveLocation: URL,
+        password: String? = nil
     ) throws -> URL? {
         
         switch ValueStore().archiveFormat {
@@ -125,6 +78,14 @@ final class ArchiveVM {
         case .cpio: try Archiver.createCpioArchive(from: sourceURLs, at: saveLocation)
         case .rar: try Archiver.createRarArchive(from: sourceURLs, at: saveLocation)
         case .sevenZ: try Archiver.create7zArchive(from: sourceURLs, at: saveLocation)
+        case .appleArchive: try Archiver.createAppleArchive(from: sourceURLs, at: saveLocation)
+        case .appleEncryptedArchive: try Archiver.createAppleEncryptedArchive(
+            from: sourceURLs,
+            at: saveLocation,
+            password: password ?? ""
+        )
+        case .xar: try Archiver.createXarArchive(from: sourceURLs, at: saveLocation)
+        case .xip: nil
         }
     }
     
@@ -174,7 +135,7 @@ final class ArchiveVM {
             
             return tmpDir
         } catch {
-            print("Error:", error)
+            Logger().error("\(error)")
             return nil
         }
     }
