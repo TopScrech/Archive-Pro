@@ -7,8 +7,8 @@ struct Sidebar: View {
         @Bindable var nav = nav
         
         List(selection: $nav.selectedCategory) {
-            ForEach(NavDestination.allCases) { tab in
-                SidebarLink(tab)
+            ForEach(NavDestination.allCases) {
+                SidebarLink($0)
             }
         }
         .scrollIndicators(.never)
