@@ -19,6 +19,9 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				macOS.plist,
+				Tools/7zz,
+				Tools/rar,
+				Tools/unrar,
 			);
 			target = F31EAAE12E231705002D2665 /* Archive Pro */;
 		};
