@@ -32,6 +32,6 @@ enum ArchiveFormat: String, Identifiable, CaseIterable {
     }
     
     static var creatableCases: [ArchiveFormat] {
-        allCases.filter { $0.canCreate }
+        allCases.filter(\.canCreate)
     }
 }
