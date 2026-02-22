@@ -12,21 +12,27 @@ final class ArchiveVM {
         let parentExt = url.deletingPathExtension().pathExtension.lowercased()
         
         switch ext {
-        case "7z": return .sevenZ
+        case "7z", "ar", "arj", "cab", "chm", "cramfs", "deb", "dmg", "fat", "hfs", "img", "iso", "lzh", "msi", "ntfs", "qcow", "qcow2", "rpm", "squashfs", "udf", "vdi", "vhd", "vhdx", "vmdk", "wim", "z", "zst": return .sevenZ
+        case "apk", "appx", "cbz", "docx", "ear", "epub", "ipa", "jar", "odp", "ods", "odt", "pptx", "vsix", "war", "whl", "xlsx": return .zip
         case "aar": return .appleArchive
         case "aea": return .appleEncryptedArchive
         case "cpio": return .cpio
         case "pkg", "xar": return .xar
         case "rar": return .rar
         case "tar": return .tar
+        case "taz": return .tarGz
+        case "tbz": return .tarBz2
         case "tbz2": return .tarBz2
         case "tgz": return .tarGz
+        case "tlz", "tlzma": return .tarLzma
         case "txz": return .tarXz
         case "xip": return .xip
         case "zip": return .zip
+        case "lzma" where parentExt == "tar": return .tarLzma
         case "bz2" where parentExt == "tar": return .tarBz2
         case "gz" where parentExt == "tar": return .tarGz
         case "xz" where parentExt == "tar": return .tarXz
+        case "bz2", "gz", "lzma", "xz": return .sevenZ
         default: return nil
         }
     }
@@ -45,6 +51,7 @@ final class ArchiveVM {
         case .tarGz: if try Archiver.extractTarGzArchive(at: archiveURL, to: saveLocation) { return saveLocation }
         case .tarBz2: if try Archiver.extractTarBz2Archive(at: archiveURL, to: saveLocation) { return saveLocation }
         case .tarXz: if try Archiver.extractTarXzArchive(at: archiveURL, to: saveLocation) { return saveLocation }
+        case .tarLzma: if try Archiver.extractTarLzmaArchive(at: archiveURL, to: saveLocation) { return saveLocation }
         case .cpio: if try Archiver.extractCpioArchive(at: archiveURL, to: saveLocation) { return saveLocation }
         case .appleArchive: if try Archiver.extractAppleArchive(at: archiveURL, to: saveLocation) { return saveLocation }
         case .appleEncryptedArchive:
@@ -75,6 +82,7 @@ final class ArchiveVM {
         case .tarGz: try Archiver.createTarGzArchive(from: sourceURLs, at: saveLocation)
         case .tarBz2: try Archiver.createTarBz2Archive(from: sourceURLs, at: saveLocation)
         case .tarXz: try Archiver.createTarXzArchive(from: sourceURLs, at: saveLocation)
+        case .tarLzma: try Archiver.createTarLzmaArchive(from: sourceURLs, at: saveLocation)
         case .cpio: try Archiver.createCpioArchive(from: sourceURLs, at: saveLocation)
         case .rar: try Archiver.createRarArchive(from: sourceURLs, at: saveLocation)
         case .sevenZ: try Archiver.create7zArchive(from: sourceURLs, at: saveLocation)
