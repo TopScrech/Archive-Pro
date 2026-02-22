@@ -3,6 +3,50 @@ import OSLog
 
 @Observable
 final class ArchiveVM {
+    func handleIncomingURL(_ url: URL, preferredArchiveFormat: ArchiveFormat) async {
+        do {
+            if isArchive(url) {
+                let format = archiveType(url)
+                let password = passwordIfNeeded(for: format)
+                
+                if format == .appleEncryptedArchive, password == nil {
+                    return
+                }
+                
+                guard
+                    let saveLocation = getSaveLocation(),
+                    let extractedURL = try unarchive(at: url, to: saveLocation, password: password)
+                else {
+                    return
+                }
+                
+                openInFinder(rootedAt: extractedURL.path)
+            } else {
+                let password = passwordIfNeeded(for: preferredArchiveFormat)
+                
+                if preferredArchiveFormat == .appleEncryptedArchive, password == nil {
+                    return
+                }
+                
+                guard
+                    let saveLocation = getSaveLocation(),
+                    let archiveURL = try createArchive(
+                        from: [url],
+                        at: saveLocation,
+                        format: preferredArchiveFormat,
+                        password: password
+                    )
+                else {
+                    return
+                }
+                
+                openInFinder(rootedAt: archiveURL.deletingLastPathComponent().path)
+            }
+        } catch {
+            Logger().error("\(error)")
+        }
+    }
+    
     func isArchive(_ url: URL) -> Bool {
         archiveType(url) != nil
     }
@@ -73,10 +117,11 @@ final class ArchiveVM {
     func createArchive(
         from sourceURLs: [URL],
         at saveLocation: URL,
+        format: ArchiveFormat,
         password: String? = nil
     ) throws -> URL? {
         
-        switch ValueStore().archiveFormat {
+        switch format {
         case .tar: try Archiver.createTarArchive(from: sourceURLs, at: saveLocation)
         case .zip: try Archiver.createZipArchive(from: sourceURLs, at: saveLocation)
         case .gzip: try Archiver.createGzipArchive(from: sourceURLs, at: saveLocation)
@@ -95,6 +140,46 @@ final class ArchiveVM {
         )
         case .xar: try Archiver.createXarArchive(from: sourceURLs, at: saveLocation)
         case .xip: nil
+        }
+    }
+    
+    private func passwordIfNeeded(for format: ArchiveFormat?) -> String? {
+        guard format == .appleEncryptedArchive else {
+            return nil
+        }
+        
+        return promptForAppleArchivePassword()
+    }
+    
+    private func promptForAppleArchivePassword() -> String? {
+        while true {
+            let alert = NSAlert()
+            alert.messageText = "Apple Encrypted Archive password"
+            alert.informativeText = "Minimum 20 characters"
+            
+            let input = NSSecureTextField(frame: NSRect(x: 0, y: 0, width: 240, height: 24))
+            alert.accessoryView = input
+            alert.addButton(withTitle: "Continue")
+            alert.addButton(withTitle: "Cancel")
+            
+            let response = alert.runModal()
+            
+            guard response == .alertFirstButtonReturn else {
+                return nil
+            }
+            
+            let password = input.stringValue
+            
+            guard password.count >= 20 else {
+                let warning = NSAlert()
+                warning.messageText = "Password too short"
+                warning.informativeText = "Use at least 20 characters"
+                warning.addButton(withTitle: "OK")
+                warning.runModal()
+                continue
+            }
+            
+            return password
         }
     }
 
