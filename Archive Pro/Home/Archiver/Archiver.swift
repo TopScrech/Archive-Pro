@@ -8,6 +8,25 @@ struct Archiver {
             try FileManager.default.setAttributes([.posixPermissions: 0o755], ofItemAtPath: url.path)
         }
     }
+    
+    static func embeddedToolURL(_ name: String) -> URL? {
+        let fileManager = FileManager.default
+        let candidateURLs = [
+            Bundle.main.bundleURL.appendingPathComponent("Contents/Executables/Tools/\(name)"),
+            Bundle.main.bundleURL.appendingPathComponent("Contents/MacOS/Tools/\(name)"),
+            Bundle.main.executableURL?.deletingLastPathComponent().appendingPathComponent("Tools/\(name)")
+        ].compactMap { $0 }
+        
+        for candidateURL in candidateURLs where fileManager.fileExists(atPath: candidateURL.path) {
+            return candidateURL
+        }
+        
+        if let toolURL = Bundle.main.url(forResource: name, withExtension: nil, subdirectory: "Tools") {
+            return toolURL
+        }
+        
+        return Bundle.main.url(forResource: name, withExtension: nil)
+    }
 }
 
 extension Archiver {
