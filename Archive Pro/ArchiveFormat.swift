@@ -1,7 +1,7 @@
 import SwiftUI
 
 enum ArchiveFormat: String, Identifiable, CaseIterable {
-    case zip, tar, tarGz, tarBz2, tarXz, tarLzma, cpio, rar, sevenZ, appleArchive, appleEncryptedArchive, xar, xip
+    case zip, gzip, tar, tarGz, tarBz2, tarXz, tarLzma, cpio, rar, sevenZ, appleArchive, appleEncryptedArchive, xar, xip
     
     var id: String {
         self.rawValue
@@ -10,6 +10,7 @@ enum ArchiveFormat: String, Identifiable, CaseIterable {
     var name: String {
         switch self {
         case .zip: "Zip"
+        case .gzip: "Gzip"
         case .tar: "Tar"
         case .tarGz: "Tar GZ"
         case .tarBz2: "Tar BZ2"

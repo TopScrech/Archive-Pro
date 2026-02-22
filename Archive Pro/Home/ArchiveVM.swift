@@ -14,7 +14,7 @@ final class ArchiveVM {
         switch ext {
         case "7z", "ar", "arj", "cab", "chm", "cramfs", "deb", "dmg", "fat", "hfs", "img", "iso", "lzh", "msi", "ntfs", "qcow", "qcow2", "rpm", "squashfs", "udf", "vdi", "vhd", "vhdx", "vmdk", "wim", "z", "zst": return .sevenZ
         case "apk", "appx", "cbz", "docx", "ear", "epub", "ipa", "jar", "odp", "ods", "odt", "pptx", "vsix", "war", "whl", "xlsx": return .zip
-        case "aar": return .appleArchive
+        case "aar": return archiveTypeForAar(url)
         case "aea": return .appleEncryptedArchive
         case "cpio": return .cpio
         case "pkg", "xar": return .xar
@@ -79,6 +79,7 @@ final class ArchiveVM {
         switch ValueStore().archiveFormat {
         case .tar: try Archiver.createTarArchive(from: sourceURLs, at: saveLocation)
         case .zip: try Archiver.createZipArchive(from: sourceURLs, at: saveLocation)
+        case .gzip: try Archiver.createGzipArchive(from: sourceURLs, at: saveLocation)
         case .tarGz: try Archiver.createTarGzArchive(from: sourceURLs, at: saveLocation)
         case .tarBz2: try Archiver.createTarBz2Archive(from: sourceURLs, at: saveLocation)
         case .tarXz: try Archiver.createTarXzArchive(from: sourceURLs, at: saveLocation)
@@ -95,6 +96,39 @@ final class ArchiveVM {
         case .xar: try Archiver.createXarArchive(from: sourceURLs, at: saveLocation)
         case .xip: nil
         }
+    }
+
+    private func archiveTypeForAar(_ url: URL) -> ArchiveFormat {
+        looksLikeZipContainer(url) ? .zip : .appleArchive
+    }
+
+    private func looksLikeZipContainer(_ url: URL) -> Bool {
+        guard let magic = fileMagic(for: url) else {
+            return false
+        }
+
+        return magic == [0x50, 0x4B, 0x03, 0x04]
+            || magic == [0x50, 0x4B, 0x05, 0x06]
+            || magic == [0x50, 0x4B, 0x07, 0x08]
+    }
+
+    private func fileMagic(for url: URL) -> [UInt8]? {
+        guard let fileHandle = try? FileHandle(forReadingFrom: url) else {
+            return nil
+        }
+
+        defer {
+            try? fileHandle.close()
+        }
+
+        guard
+            let data = try? fileHandle.read(upToCount: 4),
+            data.count == 4
+        else {
+            return nil
+        }
+
+        return [UInt8](data)
     }
     
     func getSaveLocation() -> URL? {

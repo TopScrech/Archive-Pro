@@ -13,6 +13,7 @@
 | tar.bz2 | ✅ | ✅ | Bzip2-compressed tar |
 | tar.xz | ✅ | ✅ | XZ-compressed tar |
 | tar.lzma | ✅ | ✅ | LZMA-compressed tar |
+| gz | ✅ | ✅ | Gzip compressed file |
 | cpio | ✅ | ✅ | CPIO archive |
 | aar | ✅ | ✅ | Apple Archive |
 | aea | ✅ | ✅ | Apple Encrypted Archive |
@@ -26,7 +27,6 @@
 | deb |  | ✅ | Debian package |
 | dmg |  | ✅ | Apple disk image |
 | fat |  | ✅ | FAT filesystem image |
-| gz |  | ✅ | Gzip compressed file |
 | hfs |  | ✅ | HFS filesystem image |
 | img |  | ✅ | Disk image |
 | iso |  | ✅ | ISO 9660 image |
@@ -56,6 +56,8 @@
 | xz |  | ✅ | XZ compressed file |
 | z |  | ✅ | Unix compress file |
 | zst |  | ✅ | Zstandard compressed file |
+
+AAR note: `.aar` files are auto-detected by signature, ZIP-signature `.aar` is treated as Android AAR and non-ZIP `.aar` is treated as Apple Archive
 
 ### ZIP-based formats
 
