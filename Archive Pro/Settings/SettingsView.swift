@@ -6,29 +6,8 @@ struct SettingsView: View {
     
     var body: some View {
         Form {
-            Section {
-                Picker(selection: $store.savingLocation) {
-                    ForEach(SavingLocation.allCases) {
-                        Text($0.name)
-                            .tag($0)
-                    }
-                } label: {
-                    Label("Saving location", systemImage: "folder")
-                }
-                .pickerStyle(.inline)
-            }
-            
-            Section {
-                Picker(selection: $store.archiveFormat) {
-                    ForEach(ArchiveFormat.creatableCases) {
-                        Text($0.name)
-                            .tag($0)
-                    }
-                } label: {
-                    Label("Archive format", systemImage: "archivebox")
-                }
-                .pickerStyle(.inline)
-            }
+            SavingLocationPickerView(savingLocation: $store.savingLocation)
+            ArchiveFormatPickerView(archiveFormat: $store.archiveFormat)
             
             Section("Debug") {
                 Button("Open the temporary directory", systemImage: "folder.badge.gearshape", action: vm.openTmpDir)

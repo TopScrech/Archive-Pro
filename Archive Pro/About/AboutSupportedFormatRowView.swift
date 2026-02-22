@@ -24,6 +24,6 @@ struct AboutSupportedFormatRowView: View {
 
 #Preview {
     AboutSupportedFormatRowView(
-        format: .init(shortName: "zip", details: "ZIP archive", canCreate: true, canExtract: true)
+        format: .init("zip", details: "ZIP archive", canCreate: true, canExtract: true)
     )
 }

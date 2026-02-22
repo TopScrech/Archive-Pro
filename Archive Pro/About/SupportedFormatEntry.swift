@@ -1,10 +1,10 @@
 import Foundation
 
 struct SupportedFormatEntry: Identifiable {
-    private let shortName: String
-    private let details: LocalizedStringResource
-    private let canCreate: Bool
-    private let canExtract: Bool
+    let shortName: String
+    let details: LocalizedStringResource
+    let canCreate: Bool
+    let canExtract: Bool
     
     init(_ shortName: String, details: LocalizedStringResource, canCreate: Bool, canExtract: Bool) {
         self.shortName = shortName
