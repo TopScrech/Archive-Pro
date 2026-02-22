@@ -8,9 +8,9 @@ struct SettingsView: View {
         Form {
             Section {
                 Picker(selection: $store.savingLocation) {
-                    ForEach(SavingLocation.allCases) { loc in
-                        Text(loc.name)
-                            .tag(loc)
+                    ForEach(SavingLocation.allCases) {
+                        Text($0.name)
+                            .tag($0)
                     }
                 } label: {
                     Label("Saving location", systemImage: "folder")
@@ -20,9 +20,9 @@ struct SettingsView: View {
             
             Section {
                 Picker(selection: $store.archiveFormat) {
-                    ForEach(ArchiveFormat.creatableCases) { format in
-                        Text(format.name)
-                            .tag(format)
+                    ForEach(ArchiveFormat.creatableCases) {
+                        Text($0.name)
+                            .tag($0)
                     }
                 } label: {
                     Label("Archive format", systemImage: "archivebox")
@@ -31,11 +31,7 @@ struct SettingsView: View {
             }
             
             Section("Debug") {
-                Button {
-                    vm.openTmpDir()
-                } label: {
-                    Label("Open the temporary directory", systemImage: "folder.badge.gearshape")
-                }
+                Button("Open the temporary directory", systemImage: "folder.badge.gearshape", action: vm.openTmpDir)
             }
         }
     }

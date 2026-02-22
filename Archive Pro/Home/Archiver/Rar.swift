@@ -3,11 +3,11 @@ import OSLog
 
 extension Archiver {
     static func embeddedRarURL() -> URL? {
-        Bundle.main.url(forResource: "rar", withExtension: nil)
+        embeddedToolURL("rar")
     }
     
     static func embeddedUnrarURL() -> URL? {
-        Bundle.main.url(forResource: "unrar", withExtension: nil)
+        embeddedToolURL("unrar")
     }
     
     static func createRarArchive(from sourceURLs: [URL], at saveLocation: URL) throws -> URL? {

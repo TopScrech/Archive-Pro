@@ -8,10 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		F31EAAFB2E2317B1002D2665 /* ScrechKit in Frameworks */ = {isa = PBXBuildFile; productRef = F31EAAFA2E2317B1002D2665 /* ScrechKit */; };
+		F3A917A52F4BB3BD009AB123 /* Archive Pro/Tools/7zz in Embed CLI Tools */ = {isa = PBXBuildFile; fileRef = F3A917A22F4BB3BD009AB123 /* Archive Pro/Tools/7zz */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F3A917A62F4BB3BD009AB123 /* Archive Pro/Tools/rar in Embed CLI Tools */ = {isa = PBXBuildFile; fileRef = F3A917A32F4BB3BD009AB123 /* Archive Pro/Tools/rar */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F3A917A72F4BB3BD009AB123 /* Archive Pro/Tools/unrar in Embed CLI Tools */ = {isa = PBXBuildFile; fileRef = F3A917A42F4BB3BD009AB123 /* Archive Pro/Tools/unrar */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F3A917A12F4BB3BD009AB123 /* Embed CLI Tools */ = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = Tools;
+			dstSubfolder = Executables;
+			files = (
+				F3A917A52F4BB3BD009AB123 /* Archive Pro/Tools/7zz in Embed CLI Tools */,
+				F3A917A62F4BB3BD009AB123 /* Archive Pro/Tools/rar in Embed CLI Tools */,
+				F3A917A72F4BB3BD009AB123 /* Archive Pro/Tools/unrar in Embed CLI Tools */,
+			);
+			name = "Embed CLI Tools";
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		F31EAAE22E231705002D2665 /* Archive Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Archive Pro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3609E5F2F4A853D00D5A1E1 /* AGENTS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AGENTS.md; sourceTree = "<group>"; };
+		F3609E602F4A853D00D5A1E1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F3A917A22F4BB3BD009AB123 /* Archive Pro/Tools/7zz */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Archive Pro/Tools/7zz"; sourceTree = SOURCE_ROOT; };
+		F3A917A32F4BB3BD009AB123 /* Archive Pro/Tools/rar */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Archive Pro/Tools/rar"; sourceTree = SOURCE_ROOT; };
+		F3A917A42F4BB3BD009AB123 /* Archive Pro/Tools/unrar */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Archive Pro/Tools/unrar"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -19,6 +41,9 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				macOS.plist,
+				Tools/7zz,
+				Tools/rar,
+				Tools/unrar,
 			);
 			target = F31EAAE12E231705002D2665 /* Archive Pro */;
 		};
@@ -48,8 +73,11 @@
 		F31EAAD92E231705002D2665 = {
 			isa = PBXGroup;
 			children = (
+				F3609E602F4A853D00D5A1E1 /* README.md */,
+				F3609E5F2F4A853D00D5A1E1 /* AGENTS.md */,
 				F3E1504E2F22DEDD00124D7D /* Archive Pro */,
 				F31EAAE32E231705002D2665 /* Products */,
+				F3609DD42F4A7FF100D5A1E1 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,6 +87,16 @@
 				F31EAAE22E231705002D2665 /* Archive Pro.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F3609DD42F4A7FF100D5A1E1 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				F3A917A22F4BB3BD009AB123 /* Archive Pro/Tools/7zz */,
+				F3A917A32F4BB3BD009AB123 /* Archive Pro/Tools/rar */,
+				F3A917A42F4BB3BD009AB123 /* Archive Pro/Tools/unrar */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,6 +109,7 @@
 				F31EAADE2E231705002D2665 /* Sources */,
 				F31EAADF2E231705002D2665 /* Frameworks */,
 				F31EAAE02E231705002D2665 /* Resources */,
+				F3A917A12F4BB3BD009AB123 /* Embed CLI Tools */,
 			);
 			buildRules = (
 			);
@@ -93,7 +132,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2600;
-				LastUpgradeCheck = 2600;
+				LastUpgradeCheck = 2630;
 				TargetAttributes = {
 					F31EAAE12E231705002D2665 = {
 						CreatedOnToolsVersion = 26.0;
@@ -146,6 +185,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -176,6 +216,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 0;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -202,6 +243,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -213,6 +255,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -243,6 +286,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 0;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -262,6 +306,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
@@ -274,6 +319,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_FILE_ACCESS_DOWNLOADS_FOLDER = readwrite;
@@ -321,6 +367,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 8FQUA2F388;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_FILE_ACCESS_DOWNLOADS_FOLDER = readwrite;

@@ -3,7 +3,7 @@ import OSLog
 
 extension Archiver {
     static func embedded7zzURL() -> URL? {
-        Bundle.main.url(forResource: "7zz", withExtension: nil)
+        embeddedToolURL("7zz")
     }
     
     static func create7zArchive(from sourceURLs: [URL], at saveLocation: URL) throws -> URL? {
