@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 90;
+	objectVersion = 100;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -155,7 +155,7 @@
 			packageReferences = (
 				F31EAAF92E2317B1002D2665 /* XCRemoteSwiftPackageReference "ScrechKit" */,
 			);
-			preferredProjectObjectVersion = 90;
+			preferredProjectObjectVersion = 100;
 			productRefGroup = F31EAAE32E231705002D2665 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
