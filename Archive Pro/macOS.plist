@@ -94,6 +94,31 @@
 				<string>dev.topscrech.archive-pro.apple-archive</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Apple Encrypted Archive</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.apple.encrypted-archive</string>
+				<string>dev.topscrech.archive-pro.apple-encrypted-archive</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Archive Pro Supported Archive</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>dev.topscrech.archive-pro.supported-archive</string>
+			</array>
+		</dict>
 	</array>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
@@ -249,6 +274,100 @@
 				<key>public.mime-type</key>
 				<array>
 					<string>application/vnd.apple.archive</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.archive</string>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Apple Encrypted Archive</string>
+			<key>UTTypeIdentifier</key>
+			<string>dev.topscrech.archive-pro.apple-encrypted-archive</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>aea</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/vnd.apple.encrypted-archive</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.archive</string>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Archive Pro Supported Archive</string>
+			<key>UTTypeIdentifier</key>
+			<string>dev.topscrech.archive-pro.supported-archive</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>apk</string>
+					<string>appx</string>
+					<string>ar</string>
+					<string>arj</string>
+					<string>bz2</string>
+					<string>cab</string>
+					<string>cbz</string>
+					<string>chm</string>
+					<string>cramfs</string>
+					<string>deb</string>
+					<string>dmg</string>
+					<string>docx</string>
+					<string>ear</string>
+					<string>epub</string>
+					<string>fat</string>
+					<string>hfs</string>
+					<string>img</string>
+					<string>ipa</string>
+					<string>iso</string>
+					<string>jar</string>
+					<string>lzma</string>
+					<string>lzh</string>
+					<string>msi</string>
+					<string>ntfs</string>
+					<string>odp</string>
+					<string>ods</string>
+					<string>odt</string>
+					<string>pkg</string>
+					<string>pptx</string>
+					<string>qcow</string>
+					<string>qcow2</string>
+					<string>rpm</string>
+					<string>squashfs</string>
+					<string>tar</string>
+					<string>taz</string>
+					<string>tbz</string>
+					<string>tbz2</string>
+					<string>tgz</string>
+					<string>tlz</string>
+					<string>tlzma</string>
+					<string>txz</string>
+					<string>udf</string>
+					<string>vdi</string>
+					<string>vhd</string>
+					<string>vhdx</string>
+					<string>vmdk</string>
+					<string>vsix</string>
+					<string>war</string>
+					<string>whl</string>
+					<string>wim</string>
+					<string>xip</string>
+					<string>xlsx</string>
+					<string>xz</string>
+					<string>z</string>
+					<string>zst</string>
 				</array>
 			</dict>
 		</dict>
