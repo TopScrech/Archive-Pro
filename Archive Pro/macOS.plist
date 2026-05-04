@@ -81,6 +81,19 @@
 				<string>dev.topscrech.archive-pro.cpio-archive</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Apple Archive</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.apple.archive</string>
+				<string>dev.topscrech.archive-pro.apple-archive</string>
+			</array>
+		</dict>
 	</array>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
@@ -214,6 +227,28 @@
 				<key>public.mime-type</key>
 				<array>
 					<string>application/x-cpio</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.archive</string>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Apple Archive</string>
+			<key>UTTypeIdentifier</key>
+			<string>dev.topscrech.archive-pro.apple-archive</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>aar</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/vnd.apple.archive</string>
 				</array>
 			</dict>
 		</dict>
