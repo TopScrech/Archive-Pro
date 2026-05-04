@@ -47,7 +47,7 @@ struct HomeView: View {
     }
     
     private func handleURL(_ url: URL) async {
-        await archiveVM.handleIncomingURL(url, preferredArchiveFormat: store.archiveFormat)
+        _ = await archiveVM.handleIncomingURL(url, preferredArchiveFormat: store.archiveFormat)
     }
 }
 

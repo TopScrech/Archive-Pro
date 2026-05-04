@@ -3,29 +3,30 @@ import OSLog
 
 @Observable
 final class ArchiveVM {
-    func handleIncomingURL(_ url: URL, preferredArchiveFormat: ArchiveFormat) async {
+    func handleIncomingURL(_ url: URL, preferredArchiveFormat: ArchiveFormat) async -> Bool {
         do {
             if isArchive(url) {
                 let format = archiveType(url)
                 let password = passwordIfNeeded(for: format)
                 
                 if format == .appleEncryptedArchive, password == nil {
-                    return
+                    return false
                 }
                 
                 guard
                     let saveLocation = getSaveLocation(),
                     let extractedURL = try unarchive(at: url, to: saveLocation, password: password)
                 else {
-                    return
+                    return false
                 }
                 
                 openInFinder(rootedAt: extractedURL.path)
+                return true
             } else {
                 let password = passwordIfNeeded(for: preferredArchiveFormat)
                 
                 if preferredArchiveFormat == .appleEncryptedArchive, password == nil {
-                    return
+                    return false
                 }
                 
                 guard
@@ -37,7 +38,7 @@ final class ArchiveVM {
                         password: password
                     )
                 else {
-                    return
+                    return false
                 }
                 
                 openInFinder(rootedAt: archiveURL.deletingLastPathComponent().path)
@@ -45,6 +46,8 @@ final class ArchiveVM {
         } catch {
             Logger().error("\(error)")
         }
+        
+        return false
     }
     
     func isArchive(_ url: URL) -> Bool {
