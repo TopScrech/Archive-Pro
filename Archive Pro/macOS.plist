@@ -16,6 +16,19 @@
 				<string>dev.topscrech.archive-pro.rar-archive</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Gzip Archive</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>org.gnu.gnu-zip-archive</string>
+				<string>dev.topscrech.archive-pro.gzip-archive</string>
+			</array>
+		</dict>
 	</array>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
@@ -38,6 +51,29 @@
 				<key>public.mime-type</key>
 				<array>
 					<string>application/vnd.rar</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.archive</string>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Gzip Archive</string>
+			<key>UTTypeIdentifier</key>
+			<string>dev.topscrech.archive-pro.gzip-archive</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>gz</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/gzip</string>
+					<string>application/x-gzip</string>
 				</array>
 			</dict>
 		</dict>
