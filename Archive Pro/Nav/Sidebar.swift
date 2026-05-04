@@ -12,6 +12,7 @@ struct Sidebar: View {
             }
         }
         .scrollIndicators(.never)
+        .frame(minWidth: 200)
     }
 }
 
