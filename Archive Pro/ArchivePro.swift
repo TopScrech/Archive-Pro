@@ -11,5 +11,8 @@ struct ArchivePro: App {
                 .environment(nav)
                 .environmentObject(store)
         }
+        .commands {
+            ArchiveProCommands(nav: nav)
+        }
     }
 }
