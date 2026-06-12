@@ -1,5 +1,8 @@
 # Archive Pro
 
+## Supported platforms
+- macOS 14+
+
 ## Supported formats
 
 ### Non-zip-based formats
