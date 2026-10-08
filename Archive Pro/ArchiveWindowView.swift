@@ -1,9 +1,9 @@
 import ScrechKit
 
 struct ArchiveWindowView: View {
+    @State private var archiveVM = ArchiveVM()
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var store: ValueStore
-    @State private var archiveVM = ArchiveVM()
     
     var body: some View {
         AppContainer()
