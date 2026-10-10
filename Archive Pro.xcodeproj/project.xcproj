@@ -49,15 +49,10 @@
       "children": [
         { "path": "<PRODUCTS>/Archive Pro.app", "id": "F31EAAE22E231705002D2665", "type": "wrapper.application", "index": false },
       ],
-    }, {
-      "kind": "group",
-      "name": "Recovered References",
-      "children": [
-        { "path": "<PROJECT>/Archive Pro/Tools/7zz", "type": "compiled.mach-o.executable", "index": false, "target-membership": [ { "build-phase": "Archive Pro/copy/Embed CLI Tools", "code-sign-on-copy": true } ] },
-        { "path": "<PROJECT>/Archive Pro/Tools/rar", "type": "compiled.mach-o.executable", "index": false, "target-membership": [ { "build-phase": "Archive Pro/copy/Embed CLI Tools", "code-sign-on-copy": true } ] },
-        { "path": "<PROJECT>/Archive Pro/Tools/unrar", "type": "compiled.mach-o.executable", "index": false, "target-membership": [ { "build-phase": "Archive Pro/copy/Embed CLI Tools", "code-sign-on-copy": true } ] },
-      ],
     },
+    { "path": "<PROJECT>/Archive Pro/Tools/7zz", "type": "compiled.mach-o.executable", "index": false, "target-membership": [ { "build-phase": "Archive Pro/copy/Embed CLI Tools", "code-sign-on-copy": true } ] },
+    { "path": "<PROJECT>/Archive Pro/Tools/rar", "type": "compiled.mach-o.executable", "index": false, "target-membership": [ { "build-phase": "Archive Pro/copy/Embed CLI Tools", "code-sign-on-copy": true } ] },
+    { "path": "<PROJECT>/Archive Pro/Tools/unrar", "type": "compiled.mach-o.executable", "index": false, "target-membership": [ { "build-phase": "Archive Pro/copy/Embed CLI Tools", "code-sign-on-copy": true } ] },
   ],
   "targets": [
     {
